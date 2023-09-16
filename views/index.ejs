@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+<div class="tasks">
+    <h1><%= listTitle %></h1>
+    <form action="/delete" method="POSt">
+    <ul class="taskList">
+        <% for (let list of lists) { %>
+            <li><input type="checkbox" name="checkBox" onChange="this.form.submit()" value="<%=list._id%>"><%= list.name %></li>
+        <% } %>
+    </ul>
+    <input type="hidden" name="listName" value="<%=listTitle %>"></input>
+</form>
+
+    <form action="/" class="todoTask" method="POST">
+    <input type="text" class="submitTask" name="item">
+    <button type="submit" name="list" value="<%= listTitle %>"><i class="fas fa-plus"></i></button>
+    </form>
+</div>
+
+</body>
+</html>
