@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path"
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import mongoose from "mongoose";
@@ -7,18 +8,16 @@ import _ from "lodash";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const partialPath=path.join(__dirname,'../public');
+console.log(partialPath)
 const app=express();
 
+const Port=process.env.PORT||5000;
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded request bodies
+app.set("view engine","ejs");
 
 
-app.use(express.static(__dirname + '/public', {
-  setHeaders: (res, path, stat) => {
-    if (path.endsWith('.js')) {
-      res.set('Content-Type', 'text/javascript');
-    }
-  },
-}));
+app.use(express.static(partialPath));
 
 //MONGOOSE ,MONGODB CODE
 
@@ -166,6 +165,6 @@ app.post("/delete",(req,res)=>{
 })
 
 
-app.listen(5000,()=>{
+app.listen(Port,()=>{
     console.log("listening to port 5000");
 })
