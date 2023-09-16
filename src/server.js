@@ -5,8 +5,8 @@ const bodyParser= require("body-parser");
 const _ = require("lodash");
 
 const staticPath=path.join(__dirname,"../public");
-const viewsPath=path.join(__dirname,"../templates/views");
-const partialsPath=path.join(__dirname,"../templates/partials");
+const viewsPath=path.join(__dirname,"../views");
+const partialsPath=path.join(__dirname,"../partials");
 
 const app=express();
 
