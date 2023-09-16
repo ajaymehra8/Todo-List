@@ -1,15 +1,12 @@
-import express from "express";
-import path from "path"
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import mongoose from "mongoose";
-import bodyParser from "body-parser";
-import _ from "lodash";
+const express=require("express");
+const path=require("path");
+const mongoose=require("mongoose");
+const bodyParser= require("body-parser");
+const _ = require("lodash");
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const partialPath=path.join(__dirname,'../public');
-console.log(partialPath)
+const staticPath=path.join(__dirname,"../public");
+
+
 const app=express();
 
 const Port=process.env.PORT||5000;
@@ -17,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded request
 app.set("view engine","ejs");
 
 
-app.use(express.static(partialPath));
+app.use(express.static(staticPath));
 
 //MONGOOSE ,MONGODB CODE
 
