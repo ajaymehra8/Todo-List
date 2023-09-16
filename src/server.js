@@ -5,7 +5,8 @@ const bodyParser= require("body-parser");
 const _ = require("lodash");
 
 const staticPath=path.join(__dirname,"../public");
-
+const viewsPath=path.join(__dirname,"../templates/views");
+const partialsPath=path.join(__dirname,"../templates/partials");
 
 const app=express();
 
@@ -13,7 +14,7 @@ const Port=process.env.PORT||5000;
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded request bodies
 app.set("view engine","ejs");
 
-
+app.set("views",viewsPath);
 app.use(express.static(staticPath));
 
 //MONGOOSE ,MONGODB CODE
